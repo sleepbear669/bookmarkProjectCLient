@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr" ng-app="bookmarkApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+</head>
+<body ng-controller="mainController">
+
+    <header>
+        <div class="member" data-ng-show="loginStatus">
+            <span data-ng-bind="loginMember.email"> 이메일</span>
+            <span data-ng-bind="loginMember.nickname"> 닉네임</span>
+        </div>
+        <div class="nonmember" data-ng-hide="loginStatus">
+            <input type="email" placeholder="email" data-ng-model="member.email">
+            <input type="password" placeholder="password" data-ng-model="member.password">
+            <button data-ng-click="signIn(member)">로그인</button>
+            <a data-ng-href="#join"><button >회원가입</button></a>
+        </div>
+    </header>
+    <nav id="main-menu">
+        <a data-ng-href="#bookmark"><button class="bookmark">책갈피</button></a>
+        <a data-ng-href="#myPhrase"><button class="my_phrase" data-ng-show="loginStatus">내 글귀</button></a>
+        <a data-ng-href="#myBookmark"><button class="my_bookmark" data-ng-show="loginStatus">내 책갈피</button></a>
+        <a data-ng-href="#bookInfo"><button class="book_info" >책 정보</button></a>
+    </nav>
+    <section id="content">
+        <div data-ng-view></div>
+    </section>
+
+    <script src="js/bookmarkApplication.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/controller/mainController.js"></script>
+    <script src="js/controller/joinController.js"></script>
+    <script src="js/controller/bookmarkController.js"></script>
+    <script src="js/controller/myPhraseController.js"></script>
+    <script src="js/controller/myBookmarkController.js"></script>
+    <script src="js/controller/bookInfoController.js"></script>
+</body>
+</html>

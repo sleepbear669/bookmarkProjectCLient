@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		.card_container{
+			border: 1px solid black;
+		}
+        .comment_box{
+            border: 3px solid aqua;
+        }
+	</style>
+</head>
+<body >
+<div class="card_write" data-ng-show="loginStatus">
+	<input type="text" ng-model="bookmark.phrase" placeholder="글귀">
+	<input type="text" ng-model="bookmark.tag" placeholder="태그">
+	<input type="text" ng-model="bookmark.title" placeholder="책 제목">
+	<button ng-click="writeCard(bookmark)" >전송</button>
+</div>
+<div class="bookmark_list">
+	<div class="card_container" data-ng-repeat="card in fetchedAllCard">
+		<button data-ng-show="loginStatus" data-ng-click="bookmarking(card.id)">책갈피 끼우기</button>
+		<ul class="card_box">
+			<li data-ng-hide="card.nickname == null">
+				<span>작성자 : </span><span data-ng-bind="card.nickname"></span>
+			</li>
+			<li data-ng-hide="card.title == null">
+				<span>책 제목 : </span><span data-ng-bind="card.title"></span>
+			</li>
+			<li>
+				<span>글귀 : </span><span data-ng-bind="card.phrase"> </span>
+			</li>
+			<li data-ng-hide="card.tag == null">
+				<span>태그 : </span><span data-ng-bind="card.tag"></span>
+			</li>
+            <li data-ng-hide="card.commentList.length == 0">
+                <div class="comment_box">
+                    <span>댓글</span>
+                    <div class="comment_write" data-ng-show="loginStatus">
+                        <input type="text" ng-model="comment.comment" >
+                        <button ng-click="writeComment(comment, card.id)" >댓글작성</button>
+                    </div>
+                    <ul class="comments_list">
+                        <li class="comment" data-ng-repeat="comment in card.commentList">
+                            <span data-ng-bind="comment.comment"></span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+		</ul>
+
+	</div>
+</div>
+</body>
+</html>

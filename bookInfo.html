@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .book_info_box{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div data-ng-repeat="bookInfo in fetchedBookInfo">
+    <ul class="book_info_box">
+        <li>
+            <span>지은이 : </span><span data-ng-bind="bookInfo.writer"></span>
+        </li>
+        <li >
+            <span>책 제목 : </span><span data-ng-bind="bookInfo.title"></span>
+        </li>
+        <li>
+            <span>출판사: </span><span data-ng-bind="bookInfo.publisher"> </span>
+        </li>
+        <li >
+            <span>소개 : </span><span data-ng-bind="bookInfo.introduce"></span>
+        </li>
+
+    </ul>
+</div>
+</body>
+</html>
